@@ -5,20 +5,16 @@ w,h = 0,0
 line_values = []
 board = []
 
-is_natural = all(
-    isinstance(x, int) 
-    and not isinstance(x, bool) 
-    and x > 0 for x in line_values
-    )
-
-xs = line_values[1::2]
-ys = line_values[::2]
-is_inside_board = (
-    all(x <= h for x in ys) 
-    and all(x <= w for x in xs)
-)
-
 def problemToList():
+    is_natural = all( x > 0 for x in line_values)
+
+    xs = line_values[1::2]
+    ys = line_values[::2]
+    is_inside_board = (
+        all(x <= h for x in ys) 
+    and all(x <= w for x in xs)
+    )
+    
     if ReadingLine == 1 and len(line_values) == 2:
         if is_natural: #自然数かどうか判定
             w = line_values[1]; h = line_values[0]
