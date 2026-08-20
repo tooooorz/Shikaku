@@ -14,7 +14,7 @@ def problemToList():
         all(x <= h for x in ys) 
     and all(x <= w for x in xs)
     )
-    
+
     if ReadingLine == 1 and len(line_values) == 2:
         if is_natural: #自然数かどうか判定
             w = line_values[1]; h = line_values[0]
