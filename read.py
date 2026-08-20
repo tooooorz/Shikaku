@@ -2,49 +2,46 @@ import sys
 
 ReadingLine = 0
 w,h = 0,0
-my_list = []
+line_values = []
 board = []
 
 is_natural = all(
     isinstance(x, int) 
     and not isinstance(x, bool) 
-    and x > 0 for x in my_list
+    and x > 0 for x in line_values
     )
 
-xs = my_list[1::2]
-ys = my_list[::2]
+xs = line_values[1::2]
+ys = line_values[::2]
 is_inside_board = (
     all(x <= h for x in ys) 
     and all(x <= w for x in xs)
 )
 
 def problemToList():
-    if ReadingLine == 1 and len(my_list) == 2:
+    if ReadingLine == 1 and len(line_values) == 2:
         if is_natural: #自然数かどうか判定
-            w = my_list[1]; h = my_list[0]
+            w = line_values[1]; h = line_values[0]
             for _ in range(h):
                 board.append([0 for _ in range(w)])
-        else: print("This problem is invalid"); print(ReadingLine); sys.exit()
-    elif ReadingLine >= 2 and len(my_list) == 6:
+        else: print("This problem is invalid"); sys.exit()
+    elif ReadingLine >= 2 and len(line_values) == 6:
         if is_natural and is_inside_board:
-            for i in range(my_list[3]):
-                for j in range(my_list[2]):
-                    board_x = my_list[1] - 1 + i
-                    board_y = my_list[0] - 1 + j
-                    print(ReadingLine)
-                    print(board_x, board_y)
-                    board[board_x][board_y] = 0
-        else: print("This problem is invalid"); print(ReadingLine); sys.exit()
-        board[my_list[4]-1][my_list[5]-1] = my_list[2] * my_list[3]
-        print(board)
-    else: print("This problem is invalid"); print(ReadingLine); sys.exit()
+            for i in range(line_values[3]):
+                for j in range(line_values[2]):
+                    board_x = line_values[1] - 1 + i
+                    board_y = line_values[0] - 1 + j
+                    board[board_y][board_x] = 0
+            board[line_values[4]-1][line_values[5]-1] = line_values[2] * line_values[3]
+        else: print("This problem is invalid"); sys.exit()
+    else: print("This problem is invalid"); sys.exit()
 
 def read_problem():
     with open("./problem/1", "r", encoding="utf-8") as f:
         for line in f:
-            global ReadingLine, my_list
+            global ReadingLine, line_values
             ReadingLine += 1
-            my_list = [int(x) for x in line.split()]
+            line_values = [int(x) for x in line.split()]
             problemToList()
 
 read_problem()
