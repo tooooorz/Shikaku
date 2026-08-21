@@ -10,13 +10,13 @@ def problemToList():
 
     xs = line_values[1::2]
     ys = line_values[::2]
-    is_inside_board = (
-        all(x <= h for x in ys) 
+    is_inside_board = (        #盤面内にあるか判定
+        all(x <= h for x in ys)
     and all(x <= w for x in xs)
     )
 
     if ReadingLine == 1 and len(line_values) == 2:
-        if is_natural: #自然数かどうか判定
+        if is_natural:
             w = line_values[1]; h = line_values[0]
             for _ in range(h):
                 board.append([0 for _ in range(w)])
