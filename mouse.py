@@ -19,11 +19,11 @@ def mouse_start(event):
 def mouse_drag(event):
     event.widget.coords(provisinal_rectangle, start_x, start_y, event.x, event.y)
     print("ドラッグ中:", event.x, event.y)
+    event.widget.tag_raise("square")
 
 def mouse_end(event):
     event.widget.coords(provisinal_rectangle, start_x, start_y, event.x, event.y)
     print("終了:", event.x, event.y)
-    event.widget.tag_lower("provisinal_rectangle", belowThis="square")
 
 def setup(canvas):
     canvas.bind("<ButtonPress-1>", mouse_start)
