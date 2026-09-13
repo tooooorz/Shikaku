@@ -22,7 +22,7 @@ def SquareTypeA(canvas,board,w,h):
             x2 = x1 + 800/w
             y2 = y1 + 800/h
             canvas.create_rectangle(x1, y1, x2, y2, width=5, tags="square")
-    placeNumber(x1,x2,y1,y2,i,j,board,canvas)
+            placeNumber(x1,x2,y1,y2,i,j,board,canvas)
 
 def SquareTypeB(canvas,board,w,h):
     for i in range(w):
@@ -32,7 +32,7 @@ def SquareTypeB(canvas,board,w,h):
             x2 = x1 + 800/w
             y2 = y1 + 800/w
             canvas.create_rectangle(x1, y1, x2, y2, width=5, tags="square")
-    placeNumber(x1,x2,y1,y2,i,j,board,canvas)
+            placeNumber(x1,x2,y1,y2,i,j,board,canvas)
 
 def SquareTypeC(canvas,board,w,h):
     for i in range(w):
@@ -42,15 +42,16 @@ def SquareTypeC(canvas,board,w,h):
             x2 = x1 + 800/h
             y2 = y1 + 800/h
             canvas.create_rectangle(x1, y1, x2, y2, width=5, tags="square")
-    placeNumber(x1,x2,y1,y2,i,j,board,canvas)
+            placeNumber(x1,x2,y1,y2,i,j,board,canvas)
 
 def placeNumber(x1,x2,y1,y2,i,j,board,canvas):
-    center_x = (x2 - x1)/2
-    center_y = (y2 - y1)/2
+    center_x = (x2 + x1)/2
+    center_y = (y2 + y1)/2
     if board[j][i] != 0:
         canvas.create_text(
-            center_x,
             center_y,
+            center_x,
             text=str(board[j][i]),
-            font=("Arial", 20)
+            font=("Arial", 50),
+            tags="square"
         )

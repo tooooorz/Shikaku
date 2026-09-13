@@ -47,4 +47,4 @@ def read_problem():
             line_values = [int(x) for x in line.split()]
             problemToList(ReadingLine, line_values)
             print(return_board)
-            return return_board
+    return return_w, return_h, return_board
